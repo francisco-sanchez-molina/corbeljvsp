@@ -1,0 +1,15 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and push Docker image
+        run: |
+          mvn install -DdockerBuild=true
+
