@@ -37,8 +37,6 @@ jobs:
       - name: retag
         run: |
           docker tag corbel/iam:1.41.0 devialab/iam:1.41.0
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          push: true
-          tags: devialab/iam:1.41.0
+      - name: push
+        run: |
+          docker push devialab/iam:1.41.0
