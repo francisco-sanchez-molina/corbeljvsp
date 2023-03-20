@@ -19,6 +19,13 @@ jobs:
           java-version: '8'
       - name: Copy settings.xml
         run: cp settings.xml $HOME/.m2/settings.xml
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
       - name: Build and push Docker image
         run: |
           mvn install -DdockerBuild=true
@@ -27,8 +34,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: retag
+        run: |
+          docker tag corbel/iam:1.41.0 devialab/iam:1.41.0
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: corbel/iam:1:41.0
+          tags: devialab/iam:1.41.0
