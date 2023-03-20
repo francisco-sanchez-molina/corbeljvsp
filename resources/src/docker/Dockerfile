@@ -9,7 +9,8 @@ ADD ${project.name}-${project.version}-bin.tar.gz /
 ADD logback.groovy /${project.name}/etc/logback.groovy
 
 # ----------- Install Imagemagick ---- #
-RUN apt update
+RUN bash
+RUN apt update || echo "error"
 RUN apt install --force-yes imagemagick
 # -------------------------------------------------- #
 
