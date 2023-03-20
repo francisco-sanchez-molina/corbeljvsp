@@ -37,6 +37,16 @@ jobs:
       - name: retag
         run: |
           docker tag corbel/iam:1.41.0 devialab/iam:1.41.0
+          docker tag corbel/notifications:1.41.0 devialab/notifications:1.41.0
+          docker tag corbel/resources:1.41.0 devialab/resources:1.41.0
+          docker tag corbel/rem-image:1.41.0 devialab/rem-image:1.41.0
+          docker tag corbel/resmi:1.41.0 devialab/resmi:1.41.0
+          docker tag corbel/restor:1.41.0 devialab/restor:1.41.0
       - name: push
         run: |
           docker push devialab/iam:1.41.0
+          docker push devialab/notifications:1.41.0
+          docker push devialab/resources:1.41.0
+          docker push devialab/rem-image:1.41.0
+          docker push devialab/resmi:1.41.0
+          docker push devialab/restor:1.41.0
