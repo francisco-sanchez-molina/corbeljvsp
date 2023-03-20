@@ -17,6 +17,8 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: '8'
+      - name: Copy settings.xml
+        run: cp .github/settings.xml $HOME/.m2/settings.xml
       - name: Build and push Docker image
         run: |
           mvn install -DdockerBuild=true
