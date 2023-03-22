@@ -10,8 +10,8 @@ ADD logback.groovy /${project.name}/etc/logback.groovy
 
 # ----------- Install Imagemagick ---- #
 RUN bash
-RUN apt update --allow-unauthenticated || echo "error"
-RUN apt install --force-yes --allow-unauthenticated imagemagick
+RUN apt-get update --allow-unauthenticated || echo "error"
+RUN apt-get install -y --allow-unauthenticated imagemagick || echo "error"
 # -------------------------------------------------- #
 
 
